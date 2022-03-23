@@ -1,7 +1,5 @@
 package hw2;
 
-import java.util.Scanner;
-
 public class Worker {
     private static final int daysInYear = 365;
 
