@@ -8,12 +8,7 @@ public class Car {
 
     public Car() {}
 
-    public Car(
-        String engine,
-        String color,
-        int tankLimit,
-        int fuelConsumption
-    ) {
+    public Car(String engine, String color, int tankLimit, int fuelConsumption) {
         this.engine = engine;
         this.color = color;
         this.tankLimit = tankLimit;
@@ -53,10 +48,7 @@ public class Car {
     }
 
     public void setTankLimit(int tankLimit) {
-        if (
-            tankLimit <= 0
-            || tankLimit == this.getTankLimit()
-        ) {
+        if (tankLimit <= 0 || tankLimit == this.getTankLimit()) {
             System.out.println("Incorrect tank limit passed!");
         }
 
