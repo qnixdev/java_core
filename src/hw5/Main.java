@@ -1,5 +1,7 @@
 package hw5;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
         // task one
@@ -30,5 +32,17 @@ public class Main {
         formulaOne.setColor(newCarColor);
         System.out.println("New car color: " + formulaOne.getColor() + ".");
         System.out.println();
+
+        // task two
+        Solution solution = new Solution();
+
+        int[] numsOne = {1, 2, 3, 4};
+        System.out.println(Arrays.toString(solution.runningSum(numsOne)));
+
+        int[] numsTwo = {1, 1, 1, 1, 1};
+        System.out.println(Arrays.toString(solution.runningSum(numsTwo)));
+
+        int[] numsThree = {3, 1, 2, 10, 1};
+        System.out.println(Arrays.toString(solution.runningSum(numsThree)));
     }
 }
