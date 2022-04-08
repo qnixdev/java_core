@@ -1,7 +1,5 @@
 package hw6;
 
-import java.util.Arrays;
-
 public class LeetCodeSolution {
     public int[] decompressRLElist(int[] nums) {
         int freq = 0;
