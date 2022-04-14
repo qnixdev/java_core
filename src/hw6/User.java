@@ -1,6 +1,6 @@
 package hw6;
 
-public class User implements EntryName {
+public class User implements Nameable {
     private String firstName;
     private String lastName;
     private int age;
@@ -36,7 +36,7 @@ public class User implements EntryName {
     }
 
     @Override
-    public String getName() {
+    public String sayName() {
         return this.getFirstName() + " " + this.getLastName();
     }
 }

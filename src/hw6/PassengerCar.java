@@ -1,6 +1,6 @@
 package hw6;
 
-final public class PassengerCar extends Car implements EntryName {
+final public class PassengerCar extends Car implements Nameable {
     public PassengerCar(String engine, int tankLimit, int fuelConsumption, int weight) {
         super(engine, tankLimit, fuelConsumption, weight);
     }
@@ -24,7 +24,7 @@ final public class PassengerCar extends Car implements EntryName {
     }
 
     @Override
-    public String getName() {
+    public String sayName() {
         return "Passenger car with " + this.getEngine() + " engine.";
     }
 }
