@@ -2,6 +2,7 @@ package hw7;
 
 public class App {
     public static void main(String[] args) {
+        // task one
         String truckEngine = "T1000";
         int truckTankLimit = 250;
         int truckFuelConsumption = 20;
@@ -15,5 +16,13 @@ public class App {
         );
 
         System.out.println(truckCar.sayName());
+        System.out.println();
+
+        // task two
+        String inputOne = "(1+(2*3)+((8)/4))+1";
+        System.out.println(Solution.maxDepth(inputOne));
+
+        String inputTwo = "(1)+((2))+(((3)))";
+        System.out.println(Solution.maxDepth(inputOne));
     }
 }
