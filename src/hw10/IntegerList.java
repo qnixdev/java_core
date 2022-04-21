@@ -36,18 +36,25 @@ public class IntegerList implements List {
 
     @Override
     public void add(int index, Object element) {
-        if (!(element instanceof Integer)) {
+        if (!(element instanceof Integer) || index < 0 || index > this.nextIndex) {
             return;
         }
 
-        if (index > this.integerData.length) {
-            resize();
-            add(index, element);
+        Integer[] destArray = new Integer[Math.max(this.nextIndex + 1, DEFAULT_CAPACITY)];
+        int j = 0;
+
+        for (int i = 0; i < destArray.length - 1; i++) {
+            if (i == index) {
+                Object[] list = destArray;
+                list[i] = element;
+            } else {
+                destArray[i] = this.integerData[j];
+                j++;
+            }
         }
 
-        Object[] list = this.integerData;
-        list[index] = element;
-        this.nextIndex = index + 1;
+        this.integerData = destArray;
+        this.nextIndex++;
     }
 
     /**
@@ -79,21 +86,32 @@ public class IntegerList implements List {
 
     @Override
     public boolean addAll(int index, Collection c) {
-        if (index <= 0) {
+        if (index < 0 || index > this.nextIndex) {
             return false;
         }
 
-        if (index > this.integerData.length) {
-            resize();
-            addAll(index, c);
+        Integer[] destArray = new Integer[Math.max(this.nextIndex + c.size(), DEFAULT_CAPACITY)];
+        int j = 0;
+
+        for (int i = 0; i < destArray.length; i++) {
+            if (i == index) {
+                Object[] destList = destArray;
+                Object[] listToAdd = c.toArray();
+
+                for (int n = 0; n < c.size(); n++) {
+                    destList[i] = listToAdd[n];
+                    i++;
+                }
+
+                i--;
+            } else {
+                destArray[i] = this.integerData[j];
+                j++;
+            }
         }
 
-        this.nextIndex = index;
-        Object[] list = c.toArray();
-
-        for (Object o : list) {
-            add(o, this.integerData, this.nextIndex);
-        }
+        this.integerData = destArray;
+        this.nextIndex += c.size();
 
         return true;
     }
@@ -105,10 +123,6 @@ public class IntegerList implements List {
 
     @Override
     public boolean contains(Object o) {
-        if (!(o instanceof Integer)) {
-            return false;
-        }
-
         Object[] list = this.integerData;
 
         for (Object i : list) {
@@ -169,7 +183,8 @@ public class IntegerList implements List {
             System.arraycopy(
                 list,
                 removeIndex + 1,
-                list, removeIndex,
+                list,
+                removeIndex,
                 newIndex - removeIndex
             );
         }
