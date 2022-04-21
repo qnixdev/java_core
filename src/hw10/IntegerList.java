@@ -45,8 +45,8 @@ public class IntegerList implements List {
 
         for (int i = 0; i < destArray.length - 1; i++) {
             if (i == index) {
-                Object[] list = destArray;
-                list[i] = element;
+                Object[] destList = destArray;
+                destList[i] = element;
             } else {
                 destArray[i] = this.integerData[j];
                 j++;
@@ -118,7 +118,7 @@ public class IntegerList implements List {
 
     @Override
     public void clear() {
-        this.integerData = new Integer[this.integerData.length];
+        this.integerData = new Integer[Math.min(this.integerData.length, DEFAULT_CAPACITY)];
     }
 
     @Override
