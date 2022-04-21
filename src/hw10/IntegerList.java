@@ -48,7 +48,6 @@ public class IntegerList implements List {
         Object[] list = this.integerData;
         list[index] = element;
         this.nextIndex = index + 1;
-        System.out.println(this.integerData.length);
     }
 
     /**
