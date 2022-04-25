@@ -134,7 +134,7 @@ public class StringLinkedList implements List {
      */
     @Override
     public void add(int index, Object o) {
-        if (index < 0 || index > this.size) {
+        if (!isPossibleIndex(index)) {
             return;
         }
 
