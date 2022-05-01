@@ -1,1 +1,1 @@
-# Hillel project
+# Hillel course java core
